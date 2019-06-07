@@ -12,10 +12,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <title>AdminLTE 3 | Starter</title>
 
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
  <link rel="stylesheet" type="text/css" href="/css/app.css">
+
+ <!-- Scripts -->
+ <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
@@ -167,10 +173,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
 
               <li class="nav-item">
-                <a href="#" class="nav-link user">
+                <router-link to="/profile" class="nav-link user">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Profile</p>
-                </a>
+                  <p>
+                        Profile
+                  </p>
+                </router-link>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link power-off">
@@ -189,10 +197,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="nav nav-treeview">
               
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <router-link to="/dashboard" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
+                  <p>
+                        Dashboard
+                  </p>
+                </router-link>
               </li>
             </ul>
           </li>
@@ -217,7 +227,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      
+      <router-view></router-view>
     </div>
     <!-- /.content -->
   </div>
