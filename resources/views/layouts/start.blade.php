@@ -171,10 +171,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+                          
+              <li class="nav-item">
+                <router-link to="/dashboard" class="nav-link">
+                  <i class="nav-icon far fa-tachometer-fastest blue"></i>
+                  <p>
+                        Dashboard
+                  </p>
+                </router-link>
+              </li>
+            
               <li class="nav-item">
                 <router-link to="/profile" class="nav-link user">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="nav-icon fas fa-user orange"></i>
                   <p>
                         Profile
                   </p>
@@ -183,24 +192,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-cog"></i>
+              <i class="nav-icon fa fa-cog green"></i>
               <p>
                 Menegment
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              
+            <ul class="nav nav-treeview">             
               <li class="nav-item">
-                <router-link to="/dashboard" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                <router-link to="/users" class="nav-link">
+                  <i class="nav-icon fas fa-users blue"></i>
                   <p>
-                        Dashboard
+                        Users
                   </p>
                 </router-link>
               </li>
             </ul>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
@@ -219,7 +228,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         
-                                        <i class="fa fa-circle-o nav-icon fa fa-power-off"></i>
+                                        <i class="fa fa-circle-o nav-icon fa fa-power-off red"></i>
                                         {{ __('Logout') }}
                                     </a>
 
