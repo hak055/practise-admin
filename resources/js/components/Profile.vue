@@ -6,7 +6,7 @@
                     <div class="card-header">Profile Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        Все про профайл
                     </div>
                 </div>
             </div>

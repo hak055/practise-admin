@@ -180,14 +180,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </router-link>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link power-off">
-                  <i class="fa fa-circle-o nav-icon fa fa-power-off"></i>
-                  <p>logout</p>
-                </a>
-              </li>
+              
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-cog"></i>
               <p>
                 Menegment
@@ -215,6 +210,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+          <li class="nav-item">
+                <!-- <a href="#" class="nav-link power-off">
+                  <i class="fa fa-circle-o nav-icon fa fa-power-off"></i>
+                  <p>logout</p>
+                </a> -->
+                <a class="nav-link power-off" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        
+                                        <i class="fa fa-circle-o nav-icon fa fa-power-off"></i>
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
