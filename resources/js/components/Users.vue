@@ -25,7 +25,7 @@
                         </tr>
                     <tr v-for="user in users.data" :key="user.id">
                         <td>{{user.id}}</td>
-                        <td>{{user.name}}</td>
+                        <td>{{user.name | upText}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.type | upText}}</td>
                         <td>{{user.created_at | myDate}}</td>
@@ -122,6 +122,7 @@
     export default {
         data() {
             return {
+                
                 users: {},
                 form: new Form({
                     name: '',
@@ -142,6 +143,7 @@
 
             CreateUser(){
                 this.form.post('api/user');
+
             }
         },
         created() {
