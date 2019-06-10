@@ -20,17 +20,25 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Type</th>
+                        <th>Registered At</th>
                         <th>Modify</th>
                         </tr>
-                        <tr>
-                        <td>183</td>
-                        <td>John Doe</td>
-                        <td>cas@gmail.ru</td>
-                        <td><span class="label label-success">Approved</span></td>
-                        <td><a href="" class="fa fa-edit blue"></a>
-                            <a href="" class="fa fa-trash red"></a>
+                    <tr v-for="user in users.data" :key="user.id">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.type | upText}}</td>
+                        <td>{{user.created_at | myDate}}</td>
+                        <td>
+                            <a href="#" @click="editModal(user)">
+                                <i class="fa fa-edit blue"></i>
+                            </a>
+                            /
+                            <a href="#" @click="deleteUser(user.id)">
+                                <i class="fa fa-trash red"></i>
+                            </a>
                         </td>
-                        </tr>                
+                    </tr>             
                     </tbody></table>
                     </div>
                   
@@ -85,7 +93,7 @@
                                     <option value="standart">Standart</option>
                                     <option value="author">Author</option>
                                 </select>
-                                <has-error :form="form" field="email"></has-error>
+                                <has-error :form="form" field="type"></has-error>
                             </div>
                         </div>
 
@@ -114,6 +122,7 @@
     export default {
         data() {
             return {
+                users: {},
                 form: new Form({
                     name: '',
                     email: '',
@@ -125,12 +134,18 @@
             }
         },
         methods: {
+             loadUsers(){
+                
+                    axios.get("api/user").then(({ data }) => (this.users = data));
+                
+            },
+
             CreateUser(){
                 this.form.post('api/user');
             }
         },
-        mounted() {
-            console.log('Component mounted.')
+        created() {
+            this.loadUsers();
         }
     }
 </script>
