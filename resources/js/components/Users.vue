@@ -78,13 +78,13 @@
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <select v-model="form.type" id="type" name="type"        
+                                <select v-model="form.type" id="type" name="type"     
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
                                     <option value="">Select user role</option>
-                                    <option value="">Admin</option>
-                                    <option value="">Standart</option>
-                                    <option value="">Author</option>
-                                </select
+                                    <option value="admin">Admin</option>
+                                    <option value="standart">Standart</option>
+                                    <option value="author">Author</option>
+                                </select>
                                 <has-error :form="form" field="email"></has-error>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>    
                 </div>
