@@ -142,12 +142,23 @@
             },
 
             CreateUser(){
+                this.$Progress.start();
                 this.form.post('api/user');
 
+                $('#addNew').modal('hide');
+
+                swal.fire({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
             }
         },
         created() {
             this.loadUsers();
+            setInterval( () => this.loadUsers(), 3000);
         }
     }
 </script>
