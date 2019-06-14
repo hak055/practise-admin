@@ -135,12 +135,36 @@
             }
         },
         methods: {
-             loadUsers(){
+            deleteUser(id){
+                swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        // Send request to the server
+                         if (result.value) {
+                                this.form.delete('api/user/'+id).then(()=>{
+                                        swal(
+                                        'Deleted!',
+                                        'Your file has been deleted.',
+                                        'success'
+                                        )
+                                    Fire.$emit('AfterCreate');
+                                }).catch(()=> {
+                                    swal("Failed!", "There was something wronge.", "warning");
+                                });
+                         }
+                    })
+            },
+            loadUsers(){
                 
                     axios.get("api/user").then(({ data }) => (this.users = data));
                 
             },
-
             CreateUser(){
                 this.$Progress.start();
                 this.form.post('api/user');

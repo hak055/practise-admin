@@ -1948,12 +1948,35 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    loadUsers: function loadUsers() {
+    deleteUser: function deleteUser(id) {
       var _this = this;
+
+      swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        // Send request to the server
+        if (result.value) {
+          _this.form["delete"]('api/user/' + id).then(function () {
+            swal('Deleted!', 'Your file has been deleted.', 'success');
+            Fire.$emit('AfterCreate');
+          })["catch"](function () {
+            swal("Failed!", "There was something wronge.", "warning");
+          });
+        }
+      });
+    },
+    loadUsers: function loadUsers() {
+      var _this2 = this;
 
       axios.get("api/user").then(function (_ref) {
         var data = _ref.data;
-        return _this.users = data;
+        return _this2.users = data;
       });
     },
     CreateUser: function CreateUser() {
@@ -1970,11 +1993,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     this.loadUsers();
     setInterval(function () {
-      return _this2.loadUsers();
+      return _this3.loadUsers();
     }, 3000);
   }
 });
